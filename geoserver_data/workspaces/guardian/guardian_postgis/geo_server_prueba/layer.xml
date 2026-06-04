@@ -1,0 +1,16 @@
+<layer>
+  <name>geo_server_prueba</name>
+  <id>LayerInfoImpl--57e047c5:19e93ad8a44:-7ff1</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--57e047c5:19e93ad8a44:-7ffe</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--57e047c5:19e93ad8a44:-7ff2</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2026-06-04 19:33:35.700 UTC</dateCreated>
+</layer>
