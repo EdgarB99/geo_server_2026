@@ -1,0 +1,32 @@
+<mapcache>
+
+  <cache name="disk" type="disk">
+    <base>/var/cache/mapcache</base>
+  </cache>
+
+  <source name="ndvi_source" type="wms">
+    <http>
+      <url>http://mapserver/cgi-bin/mapserv?map=/etc/mapserver/guardian.map</url>
+    </http>
+
+    <getmap>
+      <params>
+        <LAYERS>ndvi</LAYERS>
+        <FORMAT>image/png</FORMAT>
+      </params>
+    </getmap>
+  </source>
+
+  <tileset name="ndvi_tiles">
+    <source>ndvi_source</source>
+    <cache>disk</cache>
+
+    <grid>google</grid>
+    <format>PNG</format>
+  </tileset>
+
+  <service type="wmts" enabled="true"/>
+  <service type="tms" enabled="true"/>
+  <service type="demo" enabled="true"/>
+
+</mapcache>
