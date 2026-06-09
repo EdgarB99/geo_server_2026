@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mapcache>
+
+  <source name="guardian_wms" type="wms">
+    <getmap>
+      <params>
+        <FORMAT>image/png</FORMAT>
+        <LAYERS>ndvi</LAYERS>
+      </params>
+    </getmap>
+
+    <http>
+      <url>http://mapserver/?map=guardian</url>
+    </http>
+  </source>
+
+  <source name="municipality_wms" type="wms">
+    <getmap>
+      <params>
+        <FORMAT>image/png</FORMAT>
+        <LAYERS>municipality</LAYERS>
+        <TRANSPARENT>true</TRANSPARENT>
+      </params>
+    </getmap>
+
+    <http>
+      <url>http://mapserver/?map=guardian</url>
+    </http>
+  </source>
+
+  <cache name="disk_cache" type="disk">
+    <base>/tmp/mapcache</base>
+  </cache>
+
+  <!-- ========================= -->
+  <!-- Tileset NDVI -->
+  <!-- ========================= -->
+
+  <tileset name="ndvi">
+
+    <source>guardian_wms</source>
+
+    <cache>disk_cache</cache>
+
+    <grid>GoogleMapsCompatible</grid>
+
+    <format>PNG</format>
+
+  </tileset>
+  
+  <!-- ========================= -->
+  <!-- Tileset Muncipios -->
+  <!-- ========================= -->
+
+  <tileset name="municipality">
+    <source>municipality_wms</source>
+    <cache>disk_cache</cache>
+    <grid>GoogleMapsCompatible</grid>
+    <format>PNG</format>
+  </tileset>
+
+
+  <service type="wmts" enabled="true"/>
+  <service type="tms" enabled="true"/>
+
+</mapcache>

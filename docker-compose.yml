@@ -9,5 +9,33 @@ services:
     environment:
       GEOSERVER_ADMIN_USER: admin
       GEOSERVER_ADMIN_PASSWORD: admin123
+
+      INITIAL_MEMORY: 512M
+      MAXIMUM_MEMORY: 1024M
+
     volumes:
       - ./geoserver_data:/opt/geoserver/data_dir
+
+  mapserver:
+    image: camptocamp/mapserver:latest
+    container_name: mapserver
+    ports:
+      - "8081:80"
+    environment:
+      MS_MAP_PATTERN: "^(guardian|/etc/mapserver/.*\\.map)$"
+      MS_MAPFILE_PATTERN: "^(guardian|/etc/mapserver/.*\\.map)$"
+    volumes:
+      - ./mapserver/mapserver.conf:/etc/mapserver.conf:ro
+      - ./mapserver/mapfiles:/etc/mapserver:ro
+      - ./mapserver/data:/data:ro
+
+  mapcache:
+    image: camptocamp/mapcache
+    container_name: mapcache
+    ports:
+      - "8082:80"
+    volumes:
+      - ./mapcache/mapcache.xml:/etc/mapcache/mapcache.xml
+      - ./mapcache/cache:/tmp/mapcache
+    depends_on:
+      - mapserver

@@ -1,0 +1,6 @@
+.DS_Store
+
+# GeoServer runtime output
+geoserver_data/gwc/
+geoserver_data/logs/
+geoserver_data/legendsamples/
